@@ -260,6 +260,7 @@ version 3.2:
 - sidedata video and asidedata audio filter
 - Changed mapping of rtp MIME type G726 to codec g726le.
 - spec compliant VAAPI/DXVA2 VC-1 decoding of slices in frame-coded images
+- add a CSV format muxer/demuxer
 
 
 version 3.1:

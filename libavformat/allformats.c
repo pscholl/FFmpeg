@@ -461,6 +461,8 @@ extern AVInputFormat  ff_xwma_demuxer;
 extern AVInputFormat  ff_yop_demuxer;
 extern AVInputFormat  ff_yuv4mpegpipe_demuxer;
 extern AVOutputFormat ff_yuv4mpegpipe_muxer;
+extern AVInputFormat  ff_csv_demuxer;
+extern AVOutputFormat ff_csv_muxer;
 /* image demuxers */
 extern AVInputFormat  ff_image_bmp_pipe_demuxer;
 extern AVInputFormat  ff_image_dds_pipe_demuxer;

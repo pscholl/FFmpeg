@@ -1305,8 +1305,22 @@ enabled
 @item off
 disabled
 @end table
-
 @end table
+
+@section csv
+
+Comma-separated values audio encoder.
+
+ This encoder is not really meant to encode real audio data, but rather provide
+a way to encode general low-rate sensor data as an audio stream. This way it
+can be used to encode and decode (and extract) audio data for software that
+primarly handles CSV data. The encoder will output one line per sample of the
+input, if a subtitle track is specified as input each line will be prepended
+with the currently subtitle.
+
+@subsection Options
+
+ This encoder has no options.
 
 @c man end AUDIO ENCODERS
 

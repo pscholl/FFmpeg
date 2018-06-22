@@ -189,6 +189,69 @@ configuration. You need to explicitly configure the build with
 An FFmpeg native decoder for Opus exists, so users can decode Opus
 without this library.
 
+@section csv
+
+decoder for comma-separated value files
+
+Thie decoder allows to de-code and -mux files with comma or otherwise separated
+files. Per default only values are decodec into a single audio stream. Each
+line represent a single sample, where the number of fields represent the number
+of channels in the audio stream. If the first field of the file can not be
+parsed as a number, the decoder will additionally create a subtitle stream
+consisting of unique label of the first field for each line. When supplying the
+timecoded option, each line can be timecoded, allowing for non-fixed sampling
+rates (ffmpeg will then resample the input).
+
+@subsection Options
+
+@table @option
+@item sample_rate, r
+The sample rate in Hz of the input. Default: 1Hz
+@item delimiters
+Delimiters used to separate fields. Default: Space and Tab
+@item subtitle
+Whether to auto-detect, turn off or on the interpretation of the first (or
+second if timecoded) field as
+a subtitle.
+@table @option
+@item -1
+auto-detect, i.e. turn on iff first field is not a number
+@item 0
+do not interpret as label
+@item 1
+interpret as label
+@end table
+@item timecoded
+@table @option
+@item 0
+default, do not interpret the first field as a timecode
+@item 1
+interpret the first field as a timecode
+@end table
+@end table
+
+@subsection Example Input
+
+Timecoded and labelled input might look like this:
+
+@example
+ 1.23 abc 1 2 3
+ 1.24 cde 1 2 3
+ 1.26 cde 1 3 4
+ ...
+ 10.43 lop 4 5 6
+@end example
+
+Labelled only like this
+
+@example
+ abc 1 2 3
+ cde 1 2 3
+ cde 1 3 4
+ ...
+ lop 4 5 6
+@end example
+
 @c man end AUDIO DECODERS
 
 @chapter Subtitles Decoders
